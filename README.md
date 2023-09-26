@@ -51,7 +51,7 @@ UBUNTU_CODENAME=jammy
 
 While fixing the Terriform CLI gpg deprication issues we notice that bash script steps were a considerable amount of more code. So we decided to create a bash script to install the Terraform CLI.
 
-This bash script is located here: [./bin/install_terraform_cli](./install_terraform_cli)
+This bash script is located here: [./bin/install_terraform_cli](./bin/install_terraform_cli)
 
 
 -This will keep the Gitpod Task File ([.gitpod.yml](.gitpod.yml)) tidy.
@@ -59,11 +59,43 @@ This bash script is located here: [./bin/install_terraform_cli](./install_terraf
 -This will allow better portability for other projects that need to install Terraform CLI.
 
 ## Shebang
-A Shebang (prounounced she-bang) tells the bash script what program interprit the script.
+A Shebang (prounounced sha-bang) tells the bash script what program interprit the script. eg. `#!/bin/bash`
+
+ChatGPT recommended this format for bash: `#!/usr/bin/env bash`
+
+-for portability for different OS distributions
+-will search the user's PATH for the bash executable
 
 https://en.wikipedia.org/wiki/Shebang_(Unix)
 
-#!/bin/bash
+#### Execution Considerations
 
+When executing the bash script we can use the `./` shorthand notiation to execute the bash script.
+
+eg. `./bin/install_terraform_cli`
+
+If we are using a script in .gitpod.yml  we need to point the script to a program to interpert it.
+
+eg. `source ./bin/install_terraform_cli`
+
+### Linux Permissions Considerations
+
+In order to make our bash scripts executable we need to change linux permissions for the fix to be executable at the user mode.
+
+```sh
+chmod u+x ./bin/install_terraform_cli
+```
+
+alternatively:
+
+```sh
+chmod 744 ./bin/install_terraform_cli
+```
 
 https://en.wikipedia.org/wiki/Chmod
+
+### Github Lifecycle (Before, Init, Command)
+
+We need to be careful when using the Init because it will not rerun if we restart an existing workspace.
+
+https://www.gitpod.io/docs/configure/workspaces/tasks

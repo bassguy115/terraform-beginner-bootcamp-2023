@@ -267,8 +267,9 @@ Provide the following code (replace your token in the file):
   }
 }
 ```
-### Automated Terrafrom Cloud (tfrc) login with GitPod
+### Automated Terrafrom Cloud (tfrc) credentials to work with GitPod
 Created a bash script using ChatGPT to create tfrc file.
+[bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
 
 ```sh
 #!/bin/bash

@@ -238,3 +238,79 @@ If you lose this file, you lose knowning the state of your infrastructure.
 ### Terraform Directory
 
 `.terraform` directory contains binaries of terraform providers.
+
+## Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login` it will launch bash a wiswig view to generate a token. However it does not work expected in Gitpod VsCode in the browser.
+
+The workaround is manually generate a token in Terraform Cloud
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+
+Then create open the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Provide the following code (replace your token in the file):
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+    }
+  }
+}
+```
+### Automated Terrafrom Cloud (tfrc) login with GitPod
+Created a bash script using ChatGPT to create tfrc file.
+
+```sh
+#!/bin/bash
+
+# Check if the TERRAFORM_CLOUD_TOKEN environment variable is set
+if [ -z "$TERRAFORM_CLOUD_TOKEN" ]; then
+  echo "Error: TERRAFORM_CLOUD_TOKEN environment variable is not set."
+  exit 1
+fi
+
+# Set the directory path and credentials file path
+TERRAFORM_DIR="$HOME/.terraform.d"
+CREDENTIALS_FILE="$TERRAFORM_DIR/credentials.tfrc.json"
+
+# Create the .terraform.d directory if it doesn't exist
+if [ ! -d "$TERRAFORM_DIR" ]; then
+  mkdir -p "$TERRAFORM_DIR"
+fi
+
+# Create the credentials file with the provided token
+echo '{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "'"$TERRAFORM_CLOUD_TOKEN"'"
+    }
+  }
+}' > "$CREDENTIALS_FILE"
+
+# Check if the credentials file was created successfully
+if [ $? -eq 0 ]; then
+  echo "Credentials file path: $CREDENTIALS_FILE"
+  echo "Credentials file has been generated. You can now use it for Terraform Cloud operations."
+else
+  echo "Failed to create credentials file."
+  exit 1
+fi
+```
+This script:
+
+-Checks if the TERRAFORM_CLOUD_TOKEN environment variable is set and exits if it's not.
+-Sets the directory path and the credentials file path.
+-Creates the .terraform.d directory if it doesn't exist using mkdir -p.
+-Creates the credentials.tfrc.json file in the specified directory with the provided token.
+-Checks if the credentials file was created successfully.
+-print the path of the $CREDENTIALS_FILE along with a message indicating that the credentials file has been generated.

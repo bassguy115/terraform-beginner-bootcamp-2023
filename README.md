@@ -310,10 +310,10 @@ fi
 ```
 This script:
 
--Checks if the TERRAFORM_CLOUD_TOKEN environment variable is set and exits if it's not.
--Sets the directory path and the credentials file path.
--Creates the .terraform.d directory if it doesn't exist using mkdir -p.
--Creates the credentials.tfrc.json file in the specified directory with the provided token.
--Checks if the credentials file was created successfully.
--print the path of the $CREDENTIALS_FILE along with a message indicating that the credentials file has been generated.
+- Checks if the TERRAFORM_CLOUD_TOKEN environment variable is set and exits if it's not.
+- Sets the directory path and the credentials file path.
+- Creates the .terraform.d directory if it doesn't exist using mkdir -p.
+- Creates the credentials.tfrc.json file in the specified directory with the provided token.
+- Checks if the credentials file was created successfully.
+- print the path of the $CREDENTIALS_FILE along with a message indicating that the credentials file has been generated.
 

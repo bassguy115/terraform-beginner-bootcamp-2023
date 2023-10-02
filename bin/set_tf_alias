@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Check if the alias already exists
-if alias tf >/dev/null 2>&1; then
-  echo "The 'tf' alias already exists."
+# Define the alias to be added
+ALIAS_NAME="tf"
+ALIAS_COMMAND="terraform"
+
+# Check if the alias already exists in ~/.bashrc
+if ! grep -q "alias $ALIAS_NAME=" ~/.bashrc; then
+  echo "alias $ALIAS_NAME='$ALIAS_COMMAND'" >> ~/.bashrc
+  source ~/.bashrc
+  echo "The '$ALIAS_NAME' alias has been added. You can now use it as a shorthand for '$ALIAS_COMMAND'."
 else
-  # Add the 'tf' alias
-  echo "alias tf='terraform'" >> ~/.bash_profile
-  source ~/.bash_profile
-  echo "The 'tf' alias has been added. You can now use 'tf' as a shorthand for 'terraform'."
+  echo "The '$ALIAS_NAME' alias already exists in ~/.bashrc."
 fi

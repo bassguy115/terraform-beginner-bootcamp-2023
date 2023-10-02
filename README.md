@@ -267,6 +267,7 @@ Provide the following code (replace your token in the file):
   }
 }
 ```
+
 ### Automated Terrafrom Cloud (tfrc) credentials to work with GitPod
 Created a bash script using ChatGPT to create tfrc file.
 [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
@@ -315,3 +316,4 @@ This script:
 -Creates the credentials.tfrc.json file in the specified directory with the provided token.
 -Checks if the credentials file was created successfully.
 -print the path of the $CREDENTIALS_FILE along with a message indicating that the credentials file has been generated.
+

@@ -27,6 +27,7 @@
     + [Terraform Directory](#terraform-directory)
   * [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace)
     + [Automated Terrafrom Cloud "tfrc" credentials to work with GitPod](#automated-terrafrom-cloud--tfrc--credentials-to-work-with-gitpod)
+      - [Bash script to generate file](#bash-script-to-generate-file)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -302,7 +303,7 @@ Provide the following code (replace your token in the file):
 ### Automated Terrafrom Cloud "tfrc" credentials to work with GitPod
 Created a bash script using ChatGPT to create tfrc file.
 [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
-
+#### Bash script to generate file
 ```sh
 #!/bin/bash
 

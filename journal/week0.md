@@ -26,7 +26,7 @@
     + [Terraform State Files](#terraform-state-files)
     + [Terraform Directory](#terraform-directory)
   * [Issues with Terraform Cloud Login and Gitpod Workspace](#issues-with-terraform-cloud-login-and-gitpod-workspace)
-    + [Automated Terrafrom Cloud "tfrc" credentials to work with GitPod](#automated-terrafrom-cloud--tfrc--credentials-to-work-with-gitpod)
+    + [Automated Terrafrom Cloud "tfrc" credentials to work with GitPod](#automated-terrafrom-cloud-tfrc-credentials-to-work-with-gitpod)
       - [Bash script to generate file](#bash-script-to-generate-file)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>

@@ -5,6 +5,7 @@
 
 ## Weekly Journal
 - [week 0 journal](journal/week0)
+- [week 1 journal](journal/week1)
 
 ## Extras
 - [github markdown TOC gernerator](https://ecotrust-canada.github.io/markdown-toc/)

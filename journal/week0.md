@@ -33,7 +33,7 @@
 
 
 
-## Semantic Versioning #tookmageout
+## Semantic Versioning
 
 This project is going to utilize versioning for its tagging.
 [semver.org](https://semver.org/)

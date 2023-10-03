@@ -4,8 +4,8 @@
   * [Install the Terraform CLI](#install-the-terraform-cli)
   * [Considerations for Linux Distribution](#considerations-for-linux-distribution)
   * [Refactoring into Bash Scripts](#refactoring-into-bash-scripts)
-  * [Shebang](#shebang)
-      - [Execution Considerations](#execution-considerations)
+    + [Shebang Considerations](#shebang-considerations)
+    + [Execution Considerations](#execution-considerations)
     + [Linux Permissions Considerations](#linux-permissions-considerations)
   * [GitPod Lifecycle](#gitpod-lifecycle)
   * [Working Env Vars](#working-env-vars)
@@ -91,7 +91,7 @@ This bash script is located here: [./bin/install_terraform_cli](./bin/install_te
 -This allows us an easier time to debug and execute manually Terriform CLI install.
 -This will allow better portability for other projects that need to install Terraform CLI.
 
-## Shebang
+### Shebang Considerations
 A Shebang (prounounced sha-bang) tells the bash script what program interprit the script. eg. `#!/bin/bash`
 
 ChatGPT recommended this format for bash: `#!/usr/bin/env bash`
@@ -101,7 +101,7 @@ ChatGPT recommended this format for bash: `#!/usr/bin/env bash`
 
 https://en.wikipedia.org/wiki/Shebang_(Unix)
 
-#### Execution Considerations
+### Execution Considerations
 
 When executing the bash script we can use the `./` shorthand notiation to execute the bash script.
 

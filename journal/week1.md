@@ -34,8 +34,79 @@ We can use the `-var` flag to set an input variable or override a variable in th
 
 ### var-file flag
 
-- TODO: document this flag
+- To call a file filled with lots of varsA set of lots of variables in a .tfvars or .tfvars.json file. eg. ```terraform apply -var-file="testing.tfvars"```
 
+A variable definitions file uses the same basic syntax as Terraform language files, but consists only of variable name assignments:
+```hcl
+image_id = "ami-abc123"
+availability_zone_names = [
+  "us-east-1a",
+  "us-west-1c",
+]
+```
+
+
+- Here's an example of a .tfvars file in HashiCorp Terraform.
+
+```hcl
+# Example tfvars file: dev.tfvars
+
+# AWS Access Key and Secret Key
+aws_access_key = "your_aws_access_key"
+aws_secret_key = "your_aws_secret_key"
+
+# AWS Region
+region = "us-west-2"
+
+# Number of EC2 instances to launch
+instance_count = 2
+
+# EC2 instance type
+instance_type = "t2.micro"
+
+# Name for the EC2 instances
+instance_name = "my-instance"
+
+# SSH Key Pair for EC2 instances
+key_name = "my-keypair"
+
+# Example tfvars file: dev.tfvars
+
+# AWS Access Key and Secret Key
+aws_access_key = "your_aws_access_key"
+aws_secret_key = "your_aws_secret_key"
+
+##### AWS Region
+region = "us-west-2"
+
+##### Number of EC2 instances to launch
+instance_count = 2
+
+##### EC2 instance type
+instance_type = "t2.micro"
+
+#### Name for the EC2 instances
+instance_name = "my-instance"
+
+# SSH Key Pair for EC2 instances
+key_name = "my-keypair"
+```
+
+In this dev.tfvars file:
+
+We define various variables and assign values to them. These variables represent the configuration settings for your Terraform deployment.
+
+The comments (lines starting with #) are for documentation purposes and provide information about what each variable is used for.
+
+You would replace "your_aws_access_key" and "your_aws_secret_key" with your actual AWS credentials.
+
+You can customize the values of the other variables according to your specific infrastructure requirements.
+
+Once you have created your .tfvars file, you can use it when running terraform apply or terraform plan to apply or plan your infrastructure changes. For example:
+
+bash
+Copy code
+terraform apply -var-file=dev.tfvars
 ### terraform.tvfars
 
 This is the default file to load in terraform variables in blunk
@@ -43,8 +114,19 @@ This is the default file to load in terraform variables in blunk
 ### auto.tfvars
 
 - TODO: document this functionality for terraform cloud
-Variables in the Terraform Cloud workspace and variables provided through the command line always overwrite variables with the same key from files ending in .auto.tfvars.
+
+-Variables in the Terraform Cloud workspace and variables provided through the command line always overwrite variables with the same key from files ending in .auto.tfvars.
 
 ### order of terraform variables
 
 - TODO: document which terraform variables takes presendence.
+
+- Terraform uses the last value it finds, overriding any previous values. Note that the same variable cannot be assigned multiple values within a single source.
+
+- Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
+
+Environment variables
+The terraform.tfvars file, if present.
+The terraform.tfvars.json file, if present.
+Any *.auto.tfvars or *.auto.tfvars.json files, processed in lexical order of their filenames.
+Any -var and -var-file options on the command line, in the order they are provided. (This includes variables set by a Terraform Cloud workspace.

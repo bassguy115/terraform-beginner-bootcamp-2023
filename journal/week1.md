@@ -130,3 +130,25 @@ The terraform.tfvars file, if present.
 The terraform.tfvars.json file, if present.
 Any *.auto.tfvars or *.auto.tfvars.json files, processed in lexical order of their filenames.
 Any -var and -var-file options on the command line, in the order they are provided. (This includes variables set by a Terraform Cloud workspace.
+
+## Dealing with Configuration Drift
+
+## What happens if we lose our state file?
+
+If you loose your statefile, you most likely will have to tear down all of your cloud infrastructure manually.
+
+You can use terraform import but it wont work for all cloud resources. You will need to check the terraform providers documentation for which resouces support import.
+
+### Fix missing resources with Terraform Import
+
+`terraform import aws_s3_bucket.bucket bucket-name`
+
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/5.15.0/docs/resources/s3_bucket#argument-reference)
+
+### Fix Manual Configuration
+
+If someone deletes or modifies cloud recources manually throuch ClickOps.
+
+IF we run Terraform plan it will attempt to put our infrastructer back into the expected state fixing Configuration Drift.

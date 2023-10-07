@@ -16,6 +16,7 @@ git push --delete origin tagname
 ```
 
 Checkout the commit that you want to retag. Grab the sha from your Github history.
+![sha example](https://github.com/bassguy115/terraform-beginner-bootcamp-2023/assets/145221609/682551c8-51f8-4e1b-97a7-0db346c9a56d)
 
 ```sh
 git checkout <SHA>

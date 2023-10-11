@@ -94,7 +94,6 @@ Inside the hello directory, create a file named hello.go. This will be your Go s
 Open hello.go in a text editor and add the following code:
 
 ```go
-Copy code
 ```package hello
 
 import "fmt"
@@ -108,7 +107,6 @@ This code defines a Go package named hello with a single function HelloWorld tha
 
 To use this package in another Go program, create a separate Go file (e.g., main.go) and import the hello package:
 ```go
-Copy code
 package main
 
 import "hello" // Import the "hello" package
@@ -120,7 +118,6 @@ func main() {
 ```
 To build and run your program, open a terminal, navigate to the directory containing main.go, and run the following commands:
 ```bash
-Copy code
 go mod init hello_world_app # Initialize a Go module
 go run main.go             # Run the Go program
 ```
@@ -139,7 +136,6 @@ Here's a simple example of a Go project for a custom Terraform provider that use
 Assuming you have a directory structure like this:
 
 ```go
-Copy code
 my-terraform-provider/
     ├── main.go
     └── go.mod
@@ -151,7 +147,6 @@ go.mod: This is the Go Modules configuration file.
 go.mod should include information about your module and its dependencies. Here's an example:
 
 ```go
-Copy code
 module github.com/yourusername/my-terraform-provider
 
 go 1.16
@@ -166,7 +161,6 @@ require lists your module's dependencies. The github.com/hashicorp/terraform-plu
 To initialize your project as a Go Module, you can run the following command in your project's root directory:
 
 ```bash
-Copy code
 go mod init github.com/yourusername/my-terraform-provider
 ```
 This will create or update the go.mod file with your module's path.
@@ -174,7 +168,6 @@ This will create or update the go.mod file with your module's path.
 To fetch and manage dependencies, you can use go get or simply run:
 
 ```bash
-Copy code
 go mod tidy
 ```
 This will ensure that the dependencies listed in your go.mod file are downloaded and available for your project.
@@ -183,4 +176,37 @@ This will ensure that the dependencies listed in your go.mod file are downloaded
 
 The purpose of the terraform.c file is to override the default setting and specify where to look for custom providers.
 
+### Required provider
 
+In main.tf you must define the required provider
+
+```hcl
+terraform {
+  required_providers {
+    terratowns = {
+      source = "local.providers/local/terratowns"
+      version = "1.0.0"
+```
+```hcl
+provider "terratowns" {
+  endpoint = "http://localhost:4567"
+  user_uuid = "e123456b99f-421c-84c9-4ccea042c7d1"
+  token = "9b12345-b8e9-483c-b703-97ba88123456"
+}
+```
+#### Troubleshooting TF Providers
+
+Turning on log levels to help get details for troubleshooting your provider
+
+input in gitpod.yml
+```hcl
+tasks:
+  - name: terraform
+    env:
+      TF_LOG: DEBUG
+```
+
+In terminal to set log level on for debugging.
+```sh
+export TF_LOG=DEBUG
+```

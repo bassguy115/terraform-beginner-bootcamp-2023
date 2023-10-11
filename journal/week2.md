@@ -53,3 +53,134 @@ bundle exec ruby server.rb
 ```
 
 All of the code for our server is stored in the `server.rb` file.
+
+
+## TF Provider in Go "Golang"
+
+Go, often referred to as Golang, is an open-source programming language developed by Google.
+
+Go uses packages as in binaries to be nimble and non dependent on installer or package manager
+
+A package is a directory of .go files
+
+A module is a collection of packages with built-in dependencies and versioning. A module comes with two additional files go.mod and go.sum.
+
+[How to Write Go Code](https://go.dev/doc/code#:~:text=packages%2C%20and%20commands.-,Code%20organization,files%20within%20the%20same%20package.)
+
+[How to use go modules](https://www.workfall.com/learning/blog/how-to-use-go-modules-for-package-management/#:~:text=for%20Go%20beginners.-,Package%20vs%20Module,with%20two%20additional%20files%20go.)
+
+### Basics for Go in TF
+
+Package main: Delcaires the package name.
+The main package is special in Go, it's where the execution of the program starts.
+```go
+package main
+```
+
+### main.go is the main directory to make a go package
+
+my-terraform-provider/
+    ├── main.go
+    └── go.mod
+
+
+#### Example from ChatGPT
+Certainly! Here's an example of a simple "Hello, World!" Go package:
+
+Create a directory for your Go package. Let's call it hello.
+
+Inside the hello directory, create a file named hello.go. This will be your Go source code file.
+
+Open hello.go in a text editor and add the following code:
+
+```go
+Copy code
+```package hello
+
+import "fmt"
+
+// HelloWorld prints a simple "Hello, World!" message.
+func HelloWorld() {
+    fmt.Println("Hello, World!")
+}
+```
+This code defines a Go package named hello with a single function HelloWorld that prints "Hello, World!" to the console.
+
+To use this package in another Go program, create a separate Go file (e.g., main.go) and import the hello package:
+```go
+Copy code
+package main
+
+import "hello" // Import the "hello" package
+
+func main() {
+    // Call the HelloWorld function from the "hello" package
+    hello.HelloWorld()
+}
+```
+To build and run your program, open a terminal, navigate to the directory containing main.go, and run the following commands:
+```bash
+Copy code
+go mod init hello_world_app # Initialize a Go module
+go run main.go             # Run the Go program
+```
+The go mod init command initializes a Go module, which is necessary if you're using Go modules (introduced in Go 1.11) to manage dependencies. If you're not using modules, you can skip the go mod init step and directly run go run main.go.
+
+When you run the program, it will import the hello package and call the HelloWorld function, which will print "Hello, World!" to the console.
+
+### Commands to initilize terraform provider in GO
+```go
+go mod init ""path""
+```
+#### Example from ChatGPT of TF Provider that uses Go Modules
+
+Here's a simple example of a Go project for a custom Terraform provider that uses Go Modules:
+
+Assuming you have a directory structure like this:
+
+```go
+Copy code
+my-terraform-provider/
+    ├── main.go
+    └── go.mod
+```
+main.go: This is your provider's Go code. It will contain the implementation of your provider.
+
+go.mod: This is the Go Modules configuration file.
+
+go.mod should include information about your module and its dependencies. Here's an example:
+
+```go
+Copy code
+module github.com/yourusername/my-terraform-provider
+
+go 1.16
+
+require (
+    github.com/hashicorp/terraform-plugin-sdk v2.6.0
+    // Other dependencies go here
+)
+```
+module specifies the name and version of your module.
+require lists your module's dependencies. The github.com/hashicorp/terraform-plugin-sdk line is an example of a dependency on the Terraform Plugin SDK, which is used to build Terraform providers.
+To initialize your project as a Go Module, you can run the following command in your project's root directory:
+
+```bash
+Copy code
+go mod init github.com/yourusername/my-terraform-provider
+```
+This will create or update the go.mod file with your module's path.
+
+To fetch and manage dependencies, you can use go get or simply run:
+
+```bash
+Copy code
+go mod tidy
+```
+This will ensure that the dependencies listed in your go.mod file are downloaded and available for your project.
+
+#### terrafrom.rc file
+
+The purpose of the terraform.c file is to override the default setting and specify where to look for custom providers.
+
+

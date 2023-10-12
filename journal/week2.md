@@ -217,3 +217,19 @@ In terminal to set log level on for debugging.
 ```sh
 export TF_LOG=DEBUG
 ```
+## Starting steps to launch your provider locally
+
+Starting your provider you first must build it by running
+```sh
+./bin/build_provider
+```
+This should creat a file under
+"terraform-provider-terratowns/terraform-provider-terratowns_v1.0.0"
+
+You will then run 
+```
+terrform init
+```
+```
+terraform apply
+```

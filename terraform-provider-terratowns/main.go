@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
 	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"

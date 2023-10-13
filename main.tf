@@ -37,11 +37,13 @@ module "home_redandblack_hosting" {
 resource "terratowns_home" "home_redandblack" {
   name = "Red and Black graphics and items are my favorite. How do you like the color combinations?"
   description = <<DESCRIPTION
-The blend of red and black graphics are very attractive. Dont you think so? I have several of my computer peripherials in red and black.
+The blend of red and black graphics are very attractive. Dont you think so? I have several of my computer peripherials in red and black. My guitars are red and black
 DESCRIPTION
   domain_name = module.home_redandblack_hosting.domain_name
   #domain_name = "3fdq3gz.cloudfront.net"
-  town = "missingo"
+
+  town = "melomaniac-mansion"
+
   content_version = var.redandblack.content_version
 }
 
@@ -59,6 +61,8 @@ resource "terratowns_home" "home_bassandfishing" {
 Do you like fishing or playing Bass? Well dont be confused becase bassguy can be used either way. We can learn about fishing here.
 DESCRIPTION
   domain_name = module.home_bassandfishing_hosting.domain_name
-  town = "nomad"
+
+  town = "the-nomad-pad"
+
   content_version = var.bassandfishing.content_version
 }

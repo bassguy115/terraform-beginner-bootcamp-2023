@@ -20,24 +20,14 @@ variable "user_uuid" {
 #  }
 #}
 
-variable "index_html_filepath" {
-  description = "Local file path to the index.html file"
+variable "public_path" {
+  description = "The file path for the public directory"
   type        = string
 
-  validation {
-    condition     = fileexists(var.index_html_filepath)
-    error_message = "The provided index_html_filepath does not exist."
-  }
-}
-
-variable "error_html_filepath" {
-  description = "The file path for error.html"
-  type        = string
-
-  validation {
-    condition     = fileexists(var.error_html_filepath)
-    error_message = "The provided path for error.html does not exist."
-  }
+#  validation {
+#    condition     = fileexists(var.index_html_filepath)
+#    error_message = "The provided index_html_filepath does not exist."
+#  }
 }
 
 variable "content_version" {
@@ -50,7 +40,3 @@ variable "content_version" {
   }
 }
 
-variable "assets_path" {
-  description = "Path to assets folder"
-  type = string
-}

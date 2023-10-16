@@ -5,6 +5,20 @@
     + [Install Gems](#install-gems)
     + [Executing ruby scripts in the context of bundler](#executing-ruby-scripts-in-the-context-of-bundler)
   * [Sinatra](#sinatra)
+- [Terratowns Mock Server](#terratowns-mock-server)
+  * [Running the web server](#running-the-web-server)
+- [CRUD](#crud)
+- [TF Provider in Go "Golang"](#tf-provider-in-go--golang-)
+  * [Basics for Go in TF](#basics-for-go-in-tf)
+  * [main.go is the main directory to make a go package](#maingo-is-the-main-directory-to-make-a-go-package)
+    + [Example from ChatGPT](#example-from-chatgpt)
+  * [Commands to initialize terraform provider in GO](#commands-to-initialize-terraform-provider-in-go)
+    + [Example from ChatGPT of TF Provider that uses Go Modules](#example-from-chatgpt-of-tf-provider-that-uses-go-modules)
+    + [terraform.rc file](#terraformrc-file)
+  * [Required provider](#required-provider)
+    + [Troubleshooting TF Providers](#troubleshooting-tf-providers)
+- [Starting steps to launch your provider locally](#starting-steps-to-launch-your-provider-locally)
+
 
 
 ## Working with Ruby
@@ -85,7 +99,7 @@ A module is a collection of packages with built-in dependencies and versioning. 
 
 ### Basics for Go in TF
 
-Package main: Delcaires the package name.
+Package main: Declares the package name.
 The main package is special in Go, it's where the execution of the program starts.
 ```go
 package main
@@ -139,7 +153,7 @@ The go mod init command initializes a Go module, which is necessary if you're us
 
 When you run the program, it will import the hello package and call the HelloWorld function, which will print "Hello, World!" to the console.
 
-### Commands to initilize terraform provider in GO
+### Commands to initialize terraform provider in GO
 ```go
 go mod init ""path""
 ```
@@ -186,7 +200,7 @@ go mod tidy
 ```
 This will ensure that the dependencies listed in your go.mod file are downloaded and available for your project.
 
-#### terrafrom.rc file
+#### terraform.rc file
 
 The purpose of the terraform.c file is to override the default setting and specify where to look for custom providers.
 
@@ -230,12 +244,12 @@ Starting your provider you first must build it by running
 ```sh
 ./bin/build_provider
 ```
-This should creat a file under
+This should create a file under
 "terraform-provider-terratowns/terraform-provider-terratowns_v1.0.0"
 
 You will then run 
 ```
-terrform init
+terraform init
 ```
 ```
 terraform apply

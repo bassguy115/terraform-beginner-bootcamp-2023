@@ -1,5 +1,38 @@
 # Terraform Beginner Bootcamp 2023 - week1
 
+- [Fixing Tags](#fixing-tags)
+- [Root Module Structure](#root-module-structure)
+- [Terraform Cloud Variables](#terraform-cloud-variables)
+  * [Loading Terraform Input Variables](#loading-terraform-input-variables)
+  * [var flag](#var-flag)
+  * [var-file flag](#var-file-flag)
+  * [terraform.tvfars](#terraformtvfars)
+  * [auto.tfvars](#autotfvars)
+  * [order of terraform variables](#order-of-terraform-variables)
+- [Dealing with Configuration Drift](#dealing-with-configuration-drift)
+- [What happens if we lose our state file?](#what-happens-if-we-lose-our-state-file-)
+  * [Fix missing resources with Terraform Import](#fix-missing-resources-with-terraform-import)
+  * [Fix Manual Configuration](#fix-manual-configuration)
+- [Fix using Terraform Refresh](#fix-using-terraform-refresh)
+- [Terraform Modules](#terraform-modules)
+- [Passing Input Variables](#passing-input-variables)
+  * [Module Sources](#module-sources)
+- [Considerations when using ChatGPT to write Terraform](#considerations-when-using-chatgpt-to-write-terraform)
+- [Working with Files in Terraform](#working-with-files-in-terraform)
+  * [Fileexists function](#fileexists-function)
+  * [Filemd5](#filemd5)
+  * [Path Variable](#path-variable)
+- [Terraform Locals](#terraform-locals)
+- [Terraform Data Sources](#terraform-data-sources)
+- [Working with JSON](#working-with-json)
+  * [Changing the lifecycle resources](#changing-the-lifecycle-resources)
+- [Terraform Data](#terraform-data)
+- [Provisioners](#provisioners)
+  * [local-exec](#local-exec)
+  * [Remote-exec](#remote-exec)
+- [For Each Expressions](#for-each-expressions)
+
+
 ## Fixing Tags
 
 [How to Delete Local and Remote Tags on Git](https://devconnected.com/how-to-delete-local-and-remote-tags-on-git/)
